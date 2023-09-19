@@ -1,8 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:space_admin/home_view.dart';
+import 'dart:ui_web';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:space_admin/core/firebase/firebase_options.dart';
+import 'package:space_admin/src/home/pages/home_page.dart';
+
+Future<void> main() async {
+  bootstrapEngine();
+  await initApp();
   runApp(MyApp());
+}
+
+Future<void> initApp() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
 
 /// create web page
@@ -13,7 +26,6 @@ class MyApp extends StatelessWidget {
     var bgColor = Color(0xFF1E1E1E);
     var greenColor = Color(0xFF00B87C);
     var secondaryColor = Color(0xFF2D2D2D);
-    var greenColor2 = Color(0xFF00B87C);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Smart Dashboard - Admin Panel v0.1 ',
@@ -24,7 +36,7 @@ class MyApp extends StatelessWidget {
         dialogBackgroundColor: secondaryColor,
         canvasColor: secondaryColor,
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

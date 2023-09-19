@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:space_admin/http_constants.dart';
+import 'package:space_admin/src/constant/http_constants.dart';
 
 class DioClient {
   DioClient._internal();
