@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:space_admin/core/router/space_router/pages.dart';
-import 'package:space_admin/src/home/pages/astronomic_event/pages/astronomic_event_detail_pages/astronomic_event_detail_page.dart';
+import 'package:space_admin/src/home/pages/astronomic_event/pages/astronomic_event_add_page/astronomic_event_add_page.dart';
+import 'package:space_admin/src/home/pages/astronomic_event/pages/astronomic_event_detail_page/astronomic_event_detail_page.dart';
 import 'package:space_admin/src/home/shell_page/shell_page.dart';
 
 final class SpaceRouter {
@@ -25,6 +26,12 @@ final class SpaceRouter {
               return const AstronomicEventPage();
             },
             routes: [
+              GoRoute(
+                path: 'add',
+                builder: (BuildContext context, GoRouterState state) {
+                  return const AstronomicEventAddPage();
+                },
+              ),
               GoRoute(
                 path: ':id',
                 builder: (BuildContext context, GoRouterState state) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:space_admin/src/home/pages/astronomic_event/bloc/astronomic_event_bloc.dart';
 import 'package:space_admin/src/home/pages/astronomic_event/model/astronomic_event_model.dart';
-import 'package:space_admin/src/home/pages/astronomic_event/pages/astronomic_event_detail_pages/astronomic_event_detail_page.dart';
+import 'package:space_admin/src/home/pages/astronomic_event/pages/astronomic_event_detail_page/astronomic_event_detail_page.dart';
 
 mixin AstronomicEventDetailPageMixin on State<AstronomicEventDetailPage> {
   late AstronomicEventModel astronomicEvent;

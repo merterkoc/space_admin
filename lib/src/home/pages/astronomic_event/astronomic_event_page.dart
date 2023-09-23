@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:space_admin/src/home/pages/astronomic_event/bloc/astronomic_event_bloc.dart';
 import 'package:space_admin/src/home/pages/astronomic_event/listener/astronomic_event_page_listener.dart';
 import 'package:space_admin/src/home/pages/astronomic_event/widget/astronomic_event_list_card.dart';
@@ -24,6 +25,7 @@ class _AstronomicEventPageState extends State<AstronomicEventPage> {
       child: Scaffold(
         body: Column(
           children: [
+            const Menu(),
             Expanded(
               child: BlocBuilder<AstronomicEventBloc, AstronomicEventState>(
                 builder: (context, state) {
@@ -37,7 +39,7 @@ class _AstronomicEventPageState extends State<AstronomicEventPage> {
                           builder: (context, state) {
                             return AstronomicEventListCard(
                               astronomicEventModel:
-                              state.astronomicEventList[index],
+                                  state.astronomicEventList[index],
                             );
                           },
                         );
@@ -48,7 +50,7 @@ class _AstronomicEventPageState extends State<AstronomicEventPage> {
               ),
             ),
           ],
-        )
+        ),
       ),
     );
   }
@@ -62,8 +64,9 @@ class Menu extends StatelessWidget {
     return Row(
       children: [
         TextButton(
-          onPressed: () {
-          },
+          onPressed: () => context.read<AstronomicEventBloc>().add(
+                const GetAstronomicEvent(),
+              ),
           child: const Text(
             'Refresh',
             style: TextStyle(color: Colors.white),
@@ -71,8 +74,7 @@ class Menu extends StatelessWidget {
         ),
         const SizedBox(width: 20),
         TextButton(
-          onPressed: () {
-          },
+          onPressed: () => context.go('/astronomic-event/add'),
           child: const Text(
             'Create Astronomic Event',
             style: TextStyle(color: Colors.white),

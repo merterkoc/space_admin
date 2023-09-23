@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:space_admin/src/common/model/page_state_enum.dart';
 import 'package:space_admin/src/home/pages/astronomic_event/bloc/astronomic_event_bloc.dart';
 
-mixin AstronomicEventDetailPageListener {
+mixin AstronomicEventAddPageListener {
   static BlocConsumer<AstronomicEventBloc, AstronomicEventState> listener(
       {required Widget child}) {
     return BlocConsumer<AstronomicEventBloc, AstronomicEventState>(
       listener: (context, state) {
-        if (state.pageState == PageState.success) {
+        if (state.pageState == PageState.success && state.operation!.isAdd) {
           SnackBar snackBar = const SnackBar(
             content: Text('Success'),
             backgroundColor: Colors.green,
@@ -16,7 +16,7 @@ mixin AstronomicEventDetailPageListener {
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         } else if (state.pageState == PageState.error) {
           SnackBar snackBar = SnackBar(
-            content: Text('Request fail: ${state.errorMessage}' ?? ''),
+            content: Text('Request fail: ${state.errorMessage}'),
             backgroundColor: Colors.red,
           );
           ScaffoldMessenger.of(context).showSnackBar(snackBar);

@@ -10,8 +10,9 @@ abstract class AstronomicEventEvent extends Equatable {
 
 class AddAstronomicEvent extends AstronomicEventEvent {
   final AstronomicEventModel astronomicEventModel;
+  final List<FilePickerResult> imageList;
 
-  const AddAstronomicEvent(this.astronomicEventModel);
+  const AddAstronomicEvent(this.astronomicEventModel, this.imageList);
 
   @override
   List<Object> get props => [astronomicEventModel];

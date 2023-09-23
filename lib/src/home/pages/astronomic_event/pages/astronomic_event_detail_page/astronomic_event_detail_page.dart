@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:space_admin/src/home/pages/astronomic_event/pages/astronomic_event_detail_pages/listener/astronomic_event_detail_pages_listener.dart';
-import 'package:space_admin/src/home/pages/astronomic_event/pages/astronomic_event_detail_pages/mixin/astronomic_event_detail_page_mixin.dart';
+import 'package:space_admin/src/home/pages/astronomic_event/mixin/astronomic_event_page_mixin.dart';
+import 'package:space_admin/src/home/pages/astronomic_event/pages/astronomic_event_detail_page/listener/astronomic_event_detail_pages_listener.dart';
 
 class AstronomicEventDetailPage extends StatefulWidget {
   const AstronomicEventDetailPage({super.key, required this.id});

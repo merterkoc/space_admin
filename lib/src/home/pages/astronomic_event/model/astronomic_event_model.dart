@@ -43,7 +43,6 @@ class AstronomicEventModel extends Equatable {
     String? name,
     String? description,
     List<String>? image,
-    String? date,
     Coordinate? coordinate,
     String? startDate,
     String? endDate,
