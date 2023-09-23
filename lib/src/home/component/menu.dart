@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -16,59 +17,41 @@ class SideMenu extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 20 * 3,
                     ),
                     Image.asset(
-                      "asset/logo.png",
+                      "assets/logo.png",
                       scale: 5,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    Text("Space Admin")
+                    const Text("Space Admin")
                   ],
                 )),
             DrawerListTile(
               title: "Dashboard",
-              svgSrc: "asset/icons/menu_dashbord.svg",
-              press: () {},
+              svgSrc: "assets/icons/menu_dashbord.svg",
+              press: () {
+                context.go('/home');
+              },
             ),
             DrawerListTile(
-              title: "Posts",
+              title: "Astronomic Events",
               svgSrc: "asset/icons/menu_tran.svg",
-              press: () {},
+              press: () {
+                context.go('/astronomic-event');
+              },
             ),
             DrawerListTile(
               title: "Pages",
               svgSrc: "asset/icons/menu_task.svg",
-              press: () {},
+              press: () {
+                context.go('/test-page');
+              },
             ),
-            DrawerListTile(
-              title: "Categories",
-              svgSrc: "asset/icons/menu_doc.svg",
-              press: () {},
-            ),
-            DrawerListTile(
-              title: "Appearance",
-              svgSrc: "asset/icons/menu_store.svg",
-              press: () {},
-            ),
-            DrawerListTile(
-              title: "Users",
-              svgSrc: "asset/icons/menu_notification.svg",
-              press: () {},
-            ),
-            DrawerListTile(
-              title: "Tools",
-              svgSrc: "asset/icons/menu_profile.svg",
-              press: () {},
-            ),
-            DrawerListTile(
-              title: "Settings",
-              svgSrc: "asset/icons/menu_setting.svg",
-              press: () {},
-            ),
+
           ],
         ),
       ),
@@ -96,7 +79,7 @@ class DrawerListTile extends StatelessWidget {
 
       title: Text(
         title,
-        style: TextStyle(color: Colors.white54),
+        style: const TextStyle(color: Colors.white54),
       ),
     );
   }
