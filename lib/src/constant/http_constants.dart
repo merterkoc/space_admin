@@ -1,7 +1,7 @@
 class HTTPConstants {
   const HTTPConstants._();
 
-  static const String baseUrl = "http://localhost:8080";
+  static const String baseUrl = "https://space-backend-79fa.globeapp.dev";
 
   static const Duration connectTimeout = Duration(milliseconds: 50000);
 
