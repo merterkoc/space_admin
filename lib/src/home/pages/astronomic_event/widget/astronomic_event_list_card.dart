@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:space_admin/core/router/space_router/space_router.dart';
 import 'package:space_admin/src/home/pages/astronomic_event/model/astronomic_event_model.dart';
 
 class AstronomicEventListCard extends StatelessWidget {
@@ -13,8 +14,8 @@ class AstronomicEventListCard extends StatelessWidget {
     return Card(
       child: InkWell(
         onTap: () {
-          context.go(
-            '/astronomic-event/${astronomicEventModel.id}',
+          context.goNamed(
+            SpaceRoute.astronomicEventDetail.name,
           );
         },
         child: ListTile(

@@ -20,7 +20,7 @@ class _SpaceDatePickerState extends State<SpaceDatePicker>
   String? get restorationId => widget.restorationId;
 
   final RestorableDateTime _selectedDate =
-      RestorableDateTime(DateTime(2021, 7, 25));
+      RestorableDateTime(DateTime(DateTime.now().year));
   late final RestorableRouteFuture<DateTime?> _restorableDatePickerRouteFuture =
       RestorableRouteFuture<DateTime?>(
     onComplete: _selectDate,
@@ -43,9 +43,8 @@ class _SpaceDatePickerState extends State<SpaceDatePicker>
         return DatePickerDialog(
           restorationId: 'date_picker_dialog',
           initialEntryMode: DatePickerEntryMode.calendarOnly,
-          initialDate: DateTime.fromMillisecondsSinceEpoch(arguments! as int),
-          firstDate: DateTime(2021),
-          lastDate: DateTime(2022),
+          firstDate: DateTime(DateTime.now().year),
+          lastDate: DateTime(DateTime.now().year + 1),
         );
       },
     );

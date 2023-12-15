@@ -17,9 +17,6 @@ class SideMenu extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(
-                      height: 20 * 3,
-                    ),
                     Image.asset(
                       "assets/logo.png",
                       scale: 5,

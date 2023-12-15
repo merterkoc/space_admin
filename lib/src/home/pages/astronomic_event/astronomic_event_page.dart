@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:space_admin/core/router/space_router/space_router.dart';
 import 'package:space_admin/src/home/pages/astronomic_event/bloc/astronomic_event_bloc.dart';
 import 'package:space_admin/src/home/pages/astronomic_event/listener/astronomic_event_page_listener.dart';
 import 'package:space_admin/src/home/pages/astronomic_event/widget/astronomic_event_list_card.dart';
@@ -74,7 +75,7 @@ class Menu extends StatelessWidget {
         ),
         const SizedBox(width: 20),
         TextButton(
-          onPressed: () => context.go('/astronomic-event/add'),
+          onPressed: () => context.goNamed(SpaceRoute.astronomicEventAdd.name),
           child: const Text(
             'Create Astronomic Event',
             style: TextStyle(color: Colors.white),

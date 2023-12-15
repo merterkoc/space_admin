@@ -22,13 +22,13 @@ class _AstronomicEventAddPageState extends State<AstronomicEventAddPage>
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const Text('FormView'),
+                const Text('Astonomic Event Add Page'),
                 const SizedBox(height: 20),
                 TextField(
                   controller: nameController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Enter Name',
+                    labelText: 'Enter Title',
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -78,7 +78,7 @@ class _AstronomicEventAddPageState extends State<AstronomicEventAddPage>
                 Opacity(
                   opacity: imageList.isNotEmpty ? 1 : 0.5,
                   child: ElevatedButton(
-                    onPressed: addEvent,
+                    onPressed: imageList.isNotEmpty ? addEvent : null,
                     child: const Text('Add Event'),
                   ),
                 ),
