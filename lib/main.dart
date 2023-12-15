@@ -1,9 +1,7 @@
 import 'dart:ui_web';
 
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:space_admin/core/dio/dio_client.dart';
-import 'package:space_admin/core/firebase/firebase_options.dart';
 import 'package:space_admin/core/router/space_router/space_router.dart';
 import 'package:space_admin/core/storage/secure_storage.dart';
 import 'package:space_admin/global/bloc/bloc_provider.dart';
@@ -18,9 +16,9 @@ Future<void> initApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   await secureTokenStorage.initialize();
   dioClient;
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
 }
 
 /// create web page
