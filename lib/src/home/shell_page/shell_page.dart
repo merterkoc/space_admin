@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:space_admin/src/home/component/menu.dart';
+import 'package:space_admin/src/login/bloc/authentication_bloc.dart';
+import 'package:space_admin/src/login/listener/authentication_listener.dart';
+import 'package:space_admin/src/login/model/enum/authentication_status.dart';
 
 class ShellPage extends StatefulWidget {
   const ShellPage({super.key, required this.currentPage});
@@ -13,14 +17,20 @@ class ShellPage extends StatefulWidget {
 class _ShellPageState extends State<ShellPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Row(
-        children: [
-          const SideMenu(),
-          Expanded(
-            child: widget.currentPage,
-          ),
-        ],
+    return MultiBlocListener(
+      listeners: [
+        ...AuthenticationListeners.routeListeners(),
+      ],
+      child: Scaffold(
+        body: Row(
+          children: [
+            if (context.read<AuthenticationBloc>().state.status.isAuthenticated)
+              const SideMenu(),
+            Expanded(
+              child: widget.currentPage,
+            ),
+          ],
+        ),
       ),
     );
   }

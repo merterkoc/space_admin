@@ -10,6 +10,7 @@ class DefaultHttpHeaderInterceptor extends Interceptor {
   ) {
     options.headers.addAll({
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
     });
     handler.next(options);
   }

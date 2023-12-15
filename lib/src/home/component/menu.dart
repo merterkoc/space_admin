@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:space_admin/src/login/bloc/authentication_bloc.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -15,18 +17,18 @@ class SideMenu extends StatelessWidget {
           children: [
             DrawerHeader(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/logo.png",
-                      scale: 5,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Text("Space Admin")
-                  ],
-                )),
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/logo.png",
+                  scale: 5,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text("Space Admin")
+              ],
+            )),
             DrawerListTile(
               title: "Dashboard",
               svgSrc: "assets/icons/menu_dashbord.svg",
@@ -48,7 +50,11 @@ class SideMenu extends StatelessWidget {
                 context.go('/test-page');
               },
             ),
-
+            ElevatedButton(
+                onPressed: () {
+                  context.read<AuthenticationBloc>().add(LogoutSubmitted());
+                },
+                child: const Text("Logout"))
           ],
         ),
       ),
@@ -73,7 +79,6 @@ class DrawerListTile extends StatelessWidget {
     return ListTile(
       onTap: press,
       horizontalTitleGap: 0.0,
-
       title: Text(
         title,
         style: const TextStyle(color: Colors.white54),

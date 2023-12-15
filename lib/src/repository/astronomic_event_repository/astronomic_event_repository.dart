@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:space_admin/core/dio/dio_client.dart';
 import 'package:space_admin/core/dio/response_entity.dart';
+import 'package:space_admin/src/constant/http_constants.dart';
 import 'package:space_admin/src/home/pages/astronomic_event/model/astronomic_event_model.dart';
 
 class AstronomicEventRepository {
-  final dio = DioClient();
 
   Future<ResponseEntity<String>> addAstronomicEvent(
       AstronomicEventModel astronomicEventModel) async {
     try {
-      final response = await dio.post(
-        '/api/admin/event',
+      final response = await dioClient.post(
+        HTTPConstants.eventPath,
         astronomicEventModel.toJson(),
       );
       return ResponseEntity<String>(
@@ -28,7 +28,9 @@ class AstronomicEventRepository {
   Future<ResponseEntity<List<AstronomicEventModel>>>
       getAstronomicEvent() async {
     try {
-      final response = await dio.get(path: '/api/admin/event');
+      final response = await dioClient.get(
+        path: HTTPConstants.eventPath,
+      );
       return ResponseEntity<List<AstronomicEventModel>>(
         statusCode: response.statusCode ?? -1,
         data: response.data['data']
@@ -48,7 +50,7 @@ class AstronomicEventRepository {
   Future<ResponseEntity<AstronomicEventModel>> getAstronomicEventById(
       String id) async {
     try {
-      final response = await dio.get(path: '/api/admin/event/$id');
+      final response = await dioClient.get(path: '${HTTPConstants.eventPath}/$id');
       return ResponseEntity<AstronomicEventModel>(
         statusCode: response.statusCode ?? -1,
         data: AstronomicEventModel.fromJson(response.data['data']),
@@ -65,8 +67,8 @@ class AstronomicEventRepository {
   Future<ResponseEntity<int>> updateAstronomicEvent(
       AstronomicEventModel astronomicEventModel) async {
     try {
-      final response = await dio.put(
-        path: '/api/admin/event/${astronomicEventModel.id}',
+      final response = await dioClient.put(
+        path: '${HTTPConstants.eventPath}/${astronomicEventModel.id}',
         data: astronomicEventModel.toJson(),
       );
       return ResponseEntity<int>(

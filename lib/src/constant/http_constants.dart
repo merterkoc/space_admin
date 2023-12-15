@@ -8,4 +8,6 @@ class HTTPConstants {
   static const Duration receiveTimeout = Duration(milliseconds: 50000);
 
   static const String eventPath = "/api/admin/event";
+
+  static const String loginPath = "/api/identity/login";
 }
