@@ -14,6 +14,7 @@ class TextView extends StatefulWidget {
   final void Function(String?)? onChanged;
   final void Function()? onEditingComplete;
   final EdgeInsetsGeometry? padding;
+  final Widget? suffixIcon;
 
   const TextView({
     super.key,
@@ -30,6 +31,7 @@ class TextView extends StatefulWidget {
     this.onEditingComplete,
     this.textInputType,
     this.padding,
+    this.suffixIcon,
   });
 
   @override
@@ -57,14 +59,7 @@ class _TextViewState extends State<TextView> {
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.blue),
           ),
-          suffixIcon: widget.textEditingController.text.isNotEmpty
-              ? IconButton(
-                  onPressed: () {
-                    widget.textEditingController.clear();
-                  },
-                  icon: const Icon(Icons.clear),
-                )
-              : null,
+          suffixIcon: widget.suffixIcon,
         ),
         keyboardType: widget.textInputType,
         initialValue: widget.initialValue,

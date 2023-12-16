@@ -9,37 +9,73 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
-    return Form(
+    return const Form(
       child: Column(
         children: [
-          TextView(
-            padding: const EdgeInsets.all(10),
-            textEditingController: emailController,
-            focusNode: FocusNode(),
-            labelText: 'Email',
-            onChanged: (value) {
-              context.read<AuthenticationBloc>().add(
-                    EmailChanged(email: value ?? ''),
-                  );
-            },
-          ),
-          const SizedBox(height: 20),
-          TextView(
-            padding: const EdgeInsets.all(10),
-            textEditingController: passwordController,
-            focusNode: FocusNode(),
-            obscureText: true,
-            labelText: 'Password',
-            onChanged: (value) {
-              context.read<AuthenticationBloc>().add(
-                    PasswordChanged(password: value ?? ''),
-                  );
-            },
-          ),
-          const SubmitButton(),
+          EmailText(),
+          SizedBox(height: 20),
+          PasswordText(),
+          SubmitButton(),
         ],
+      ),
+    );
+  }
+}
+
+class EmailText extends StatelessWidget {
+  const EmailText({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final emailController = TextEditingController();
+    return TextView(
+      padding: const EdgeInsets.all(10),
+      textEditingController: emailController,
+      focusNode: FocusNode(),
+      labelText: 'Email',
+      onChanged: (value) {
+        context.read<AuthenticationBloc>().add(
+              EmailChanged(email: value ?? ''),
+            );
+      },
+    );
+  }
+}
+
+class PasswordText extends StatefulWidget {
+  const PasswordText({super.key});
+
+  @override
+  State<PasswordText> createState() => _PasswordTextState();
+}
+
+class _PasswordTextState extends State<PasswordText> {
+  final passwordController = TextEditingController();
+  bool passwordVisible = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextView(
+      padding: const EdgeInsets.all(10),
+      textEditingController: passwordController,
+      focusNode: FocusNode(),
+      obscureText: !passwordVisible,
+      textInputType: TextInputType.visiblePassword,
+      labelText: 'Password',
+      onChanged: (value) {
+        context.read<AuthenticationBloc>().add(
+              PasswordChanged(password: value ?? ''),
+            );
+      },
+      suffixIcon: IconButton(
+        icon: Icon(passwordVisible ? Icons.visibility : Icons.visibility_off),
+        onPressed: () {
+          setState(
+            () {
+              passwordVisible = !passwordVisible;
+            },
+          );
+        },
       ),
     );
   }
